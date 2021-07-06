@@ -1,0 +1,6 @@
+div.row#main-content {
+  background-image: url("watermark-draft.png") !important;
+  background-repeat: repeat-y !important;
+  background-position: center top !important;
+  background-attachment: scroll !important;
+}

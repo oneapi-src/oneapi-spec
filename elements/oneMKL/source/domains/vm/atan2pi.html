@@ -1,0 +1,3946 @@
+<!--
+SPDX-FileCopyrightText: 2019-2020 Intel Corporation
+
+SPDX-License-Identifier: MIT
+-->
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>atan2pi &#8212; oneAPI Specification 1.1-provisional-rev-2 documentation</title>
+    
+  <link href="../../../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/sphinx-book-theme.a9598182269d02d7cb936adb28beef7c.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinxmark.css" />
+    
+  <link rel="preload" as="script" href="../../../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../../../../../_static/custom.js"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="atanh" href="atanh.html" />
+    <link rel="prev" title="atan2" href="atan2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../../index.html">
+      
+      <img src="../../../../../_static/oneAPI-rgb-rev-100.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">oneAPI Specification 1.1-provisional-rev-2 documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the spec..." aria-label="Search the spec..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../architecture.html">
+   Software Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../dpcpp/source/index.html">
+   DPC++
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../oneDPL/source/index.html">
+   oneDPL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneDPL/source/common.html">
+     Namespaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneDPL/source/stdlib.html">
+     Supported C++ Standard Library APIs and Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneDPL/source/pstl.html">
+     Extensions to Parallel STL
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneDPL/source/extensions.html">
+     Specific API of oneDPL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../oneDNN/source/index.html">
+   oneDNN
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneDNN/source/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneDNN/source/conventions.html">
+     Conventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneDNN/source/execution_model/index.html">
+     Execution Model
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneDNN/source/data_model/index.html">
+     Data model
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneDNN/source/data_model/data_types/index.html">
+       Data types
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+      <label for="toctree-checkbox-4">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDNN/source/data_model/data_types/bfloat16.html">
+         Bfloat16
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDNN/source/data_model/data_types/int8.html">
+         Int8
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneDNN/source/data_model/memory/index.html">
+       Memory
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+      <label for="toctree-checkbox-5">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDNN/source/data_model/memory/formats.html">
+         Memory Formats
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDNN/source/data_model/memory/objects.html">
+         Memory Descriptors and Objects
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneDNN/source/primitives/index.html">
+     Primitives
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/general.html">
+       Common Definitions
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/attributes/index.html">
+       Attributes
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDNN/source/primitives/attributes/post-ops.html">
+         Post-ops
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/batch_normalization.html">
+       Batch Normalization
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/binary.html">
+       Binary
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/concat.html">
+       Concat
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/convolution.html">
+       Convolution and Deconvolution
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/eltwise.html">
+       Elementwise
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/inner-product.html">
+       Inner Product
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/layer_normalization.html">
+       Layer normalization
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/logsoftmax.html">
+       LogSoftmax
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/lrn.html">
+       Local Response Normalization
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/matmul.html">
+       Matrix Multiplication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/pooling.html">
+       Pooling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/reorder.html">
+       Reorder
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/resampling.html">
+       Resampling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/rnn.html">
+       RNN
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/shuffle.html">
+       Shuffle
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/softmax.html">
+       Softmax
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDNN/source/primitives/sum.html">
+       Sum
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../oneCCL/source/index.html">
+   oneCCL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneCCL/source/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneCCL/source/namespaces.html">
+     Namespaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneCCL/source/spec_version.html">
+     Current Version of this oneCCL Specification
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneCCL/source/definitions.html">
+     Definitions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneCCL/source/spec/main_objects.html">
+       oneCCL Concepts
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneCCL/source/spec/operations.html">
+       Communication Operations
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneCCL/source/spec/datatypes.html">
+         Datatypes
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneCCL/source/spec/reductions.html">
+         Reductions
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneCCL/source/spec/collective_operations.html">
+         Collective Operations
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneCCL/source/spec/operation_attributes.html">
+         Operation Attributes
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneCCL/source/spec/operation_progress.html">
+         Operation Progress Tracking
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneCCL/source/spec/error_handling.html">
+       Error handling
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneCCL/source/programming_model.html">
+     Programming Model
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneCCL/source/spec/generic_workflow.html">
+       Generic Workflow
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../l0/source/index.html">
+   Level Zero
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../oneDAL/source/index.html">
+   oneDAL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneDAL/source/introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneDAL/source/glossary.html">
+     Glossary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneDAL/source/notations.html">
+     Mathematical Notations
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneDAL/source/programming_model/index.html">
+     Programming model
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+    <label for="toctree-checkbox-13">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDAL/source/programming_model/end_to_end_example.html">
+       End-to-end example
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDAL/source/programming_model/descriptors.html">
+       Descriptors
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneDAL/source/programming_model/operations/index.html">
+       Operations
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+      <label for="toctree-checkbox-14">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDAL/source/programming_model/operations/support.html">
+         Supported operations
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDAL/source/programming_model/computational_modes.html">
+       Computational modes
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneDAL/source/common_interface/index.html">
+     Common Interface
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDAL/source/common_interface/spec_version.html">
+       Current Version of this oneDAL Specification
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDAL/source/common_interface/header_files_and_namespaces.html">
+       Header files
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDAL/source/common_interface/error_handling.html">
+       Error handling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDAL/source/common_interface/common_type_definitions.html">
+       Common type definitions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneDAL/source/data_management/index.html">
+     Data management
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+    <label for="toctree-checkbox-16">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDAL/source/data_management/array.html">
+       Array
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneDAL/source/data_management/accessors.html">
+       Accessors
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+      <label for="toctree-checkbox-17">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDAL/source/data_management/accessor/column.html">
+         Column accessor
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDAL/source/data_management/accessor/row.html">
+         Row accessor
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneDAL/source/data_management/data_sources.html">
+       Data Sources
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+      <label for="toctree-checkbox-18">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDAL/source/data_management/csv_data_source.html">
+         CSV data source
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneDAL/source/data_management/tables.html">
+       Tables
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+      <label for="toctree-checkbox-19">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDAL/source/data_management/table/homogen.html">
+         Homogeneous table
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneDAL/source/algorithms/index.html">
+     Algorithms
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneDAL/source/algorithms/clustering/index.html">
+       Clustering
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+      <label for="toctree-checkbox-21">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDAL/source/algorithms/clustering/kmeans.html">
+         K-Means
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDAL/source/algorithms/clustering/kmeans_init.html">
+         K-Means initialization
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneDAL/source/algorithms/nearest_neighbors/index.html">
+       Nearest Neighbors (kNN)
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+      <label for="toctree-checkbox-22">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDAL/source/algorithms/nearest_neighbors/knn_classification.html">
+         k-Nearest Neighbors Classification (k-NN)
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneDAL/source/algorithms/decomposition/index.html">
+       Decomposition
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+      <label for="toctree-checkbox-23">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneDAL/source/algorithms/decomposition/pca.html">
+         Principal Components Analysis (PCA)
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneDAL/source/appendix/index.html">
+     Appendix
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneDAL/source/appendix/kd_tree.html">
+       k-d Tree
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneDAL/source/bibliography.html">
+     Bibliography
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../oneTBB/source/nested-index.html">
+   oneTBB
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneTBB/source/nested-gen-info.html">
+     General Information
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+    <label for="toctree-checkbox-26">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneTBB/source/intro.html">
+       Introduction
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneTBB/source/notation.html">
+       Notational Conventions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneTBB/source/identifiers.html">
+       Identifiers
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneTBB/source/named_requirements.html">
+       Named Requirements
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+      <label for="toctree-checkbox-27">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/range.html">
+         Range
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/splittable.html">
+         Splittable
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/par_for_body.html">
+         ParallelForBody
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/par_for_func.html">
+         ParallelForFunc
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/par_for_index.html">
+         ParallelForIndex
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/par_reduce_body.html">
+         ParallelReduceBody
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/par_reduce_func.html">
+         ParallelReduceFunc
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/par_reduce_reduction.html">
+         ParallelReduceReduction
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/par_for_each_body.html">
+         ParallelForEachBody
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/container_based_sequence.html">
+         ContainerBasedSequence
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/par_scan_body.html">
+         ParallelScanBody
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/par_scan_combine.html">
+         ParallelScanCombine
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/par_scan_func.html">
+         ParallelScanFunc
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/blocked_range_val.html">
+         BlockedRangeValue
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/algorithms/filter_body.html">
+         FilterBody
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/mutexes/mutex.html">
+         Mutex
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/mutexes/rw_mutex.html">
+         ReaderWriterMutex
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/containers/hash_compare.html">
+         HashCompare
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/containers/container_range.html">
+         ContainerRange
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/task_scheduler/suspend_func.html">
+         SuspendFunc
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/flow_graph/async_node_body.html">
+         AsyncNodeBody
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/flow_graph/continue_node_body.html">
+         ContinueNodeBody
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/flow_graph/gateway_type.html">
+         GatewayType
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/flow_graph/function_node_body.html">
+         FunctionNodeBody
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/flow_graph/join_node_func_obj.html">
+         JoinNodeFunctionObject
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/flow_graph/input_node_body.html">
+         InputNodeBody
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/flow_graph/multifunction_node_body.html">
+         MultifunctionNodeBody
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/named_requirements/flow_graph/sequencer.html">
+         Sequencer
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneTBB/source/thread_safety.html">
+       Thread Safety
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneTBB/source/nested-interfaces.html">
+     oneTBB Interfaces
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneTBB/source/configuration.html">
+       Configuration
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+      <label for="toctree-checkbox-29">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/configuration/namespaces.html">
+         Namespaces
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/configuration/version_information.html">
+         Version Information
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/configuration/enabling_debugging_features.html">
+         Enabling Debugging Features
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/configuration/feature_macros.html">
+         Feature Macros
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneTBB/source/algorithms.html">
+       Algorithms
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+      <label for="toctree-checkbox-30">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/functions/parallel_for_func.html">
+         parallel_for
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/functions/parallel_reduce_func.html">
+         parallel_reduce
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/functions/parallel_deterministic_reduce_func.html">
+         parallel_deterministic_reduce
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/functions/parallel_scan_func.html">
+         parallel_scan
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/functions/parallel_for_each_func.html">
+         parallel_for_each
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/functions/parallel_invoke_func.html">
+         parallel_invoke
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/functions/parallel_pipeline_func.html">
+         parallel_pipeline
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/functions/parallel_sort_func.html">
+         parallel_sort
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/blocked_ranges/blocked_range_cls.html">
+         blocked_range
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/blocked_ranges/blocked_range2d_cls.html">
+         blocked_range2d
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/blocked_ranges/blocked_range3d_cls.html">
+         blocked_range3d
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/partitioners/auto_partitioner.html">
+         auto_partitioner
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/partitioners/affinity_partitioner.html">
+         affinity_partitioner
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/partitioners/static_partitioner.html">
+         static_partitioner
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/partitioners/simple_partitioner.html">
+         simple_partitioner
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/split_tags/proportional_split_cls.html">
+         proportional split
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/algorithms/split_tags/split_cls.html">
+         split
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneTBB/source/flow_graph.html">
+       Flow Graph
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+      <label for="toctree-checkbox-31">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/graph_cls.html">
+         graph
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/graph_node_cls.html">
+         graph_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/sender.html">
+         sender
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/receiver.html">
+         receiver
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/forwarding_and_buffering.html">
+         Forwarding and Buffering
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/continue_node_cls.html">
+         continue_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/func_node_cls.html">
+         function_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/input_node_cls.html">
+         input_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/multifunc_node_cls.html">
+         multifunction_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/async_node_cls.html">
+         async_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/functional_node_policies.html">
+         Function Nodes Policies
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/node_priorities.html">
+         Nodes Priorities
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/predefined_concurrency_limits.html">
+         Predefined Concurrency Limits
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/copy_body_func.html">
+         copy_body
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/overwrite_node_cls.html">
+         overwrite_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/write_once_node_cls.html">
+         write_once_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/buffer_node_cls.html">
+         buffer_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/queue_node_cls.html">
+         queue_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/priority_queue_node_cls.html">
+         priority_queue_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/sequencer_node_cls.html">
+         sequencer_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/limiter_node_cls.html">
+         limiter_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/broadcast_node_cls.html">
+         broadcast_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/join_node_cls.html">
+         join_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/split_node_cls.html">
+         split_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/indexer_node_cls.html">
+         indexer_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/composite_node_cls.html">
+         composite_node
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/input_port_func.html">
+         input_port
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/output_port_func.html">
+         output_port
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/make_edge_func.html">
+         make_edge
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/remove_edge_func.html">
+         remove_edge
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/continue_msg_cls.html">
+         continue_msg
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/tagged_msg_cls.html">
+         tagged_msg
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/dependency_flow_graph_example.html">
+         Dependency Flow Graph Example
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/flow_graph/message_flow_graph_example.html">
+         Message Flow Graph Example
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneTBB/source/task_scheduler.html">
+       Task Scheduler
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+      <label for="toctree-checkbox-32">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/task_scheduler/scheduling_controls/task_group_context_cls.html">
+         task_group_context
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/task_scheduler/scheduling_controls/global_control_cls.html">
+         global_control
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/task_scheduler/scheduling_controls/resumable_tasks.html">
+         Resumable tasks
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/task_scheduler/task_group/task_group_cls.html">
+         task_group
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/task_scheduler/task_group/task_group_status_enum.html">
+         task_group_status
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/task_scheduler/task_arena/task_arena_cls.html">
+         task_arena
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/task_scheduler/task_arena/this_task_arena_ns.html">
+         this_task_arena
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/task_scheduler/task_arena/task_scheduler_observer_cls.html">
+         task_scheduler_observer
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneTBB/source/containers.html">
+       Containers
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/>
+      <label for="toctree-checkbox-33">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_vector_cls.html">
+         concurrent_vector
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_queue_cls.html">
+         concurrent_queue
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_bounded_queue_cls.html">
+         concurrent_bounded_queue
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_priority_queue_cls.html">
+         concurrent_priority_queue
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_hash_map_cls.html">
+         concurrent_hash_map
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_unordered_map_cls.html">
+         concurrent_unordered_map
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_unordered_multimap.html">
+         concurrent_unordered_multimap
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_unordered_set_cls.html">
+         concurrent_unordered_set
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_unordered_multiset.html">
+         concurrent_unordered_multiset
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_map_cls.html">
+         concurrent_map
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_multimap_cls.html">
+         concurrent_multimap
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_set_cls.html">
+         concurrent_set
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/concurrent_multiset_cls.html">
+         concurrent_multiset
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/auxiliary/tbb_hash_compare_cls.html">
+         tbb_hash_compare
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/containers/auxiliary/node_handles_cls.html">
+         Node handles
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneTBB/source/thread_local_storage.html">
+       Thread Local Storage
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" type="checkbox"/>
+      <label for="toctree-checkbox-34">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/thread_local_storage/combinable_cls.html">
+         combinable
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/thread_local_storage/enumerable_thread_specific_cls.html">
+         enumerable_thread_specific
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/thread_local_storage/flattened2d_cls.html">
+         flattened2d
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneTBB/source/nested-aux-interfaces.html">
+     oneTBB Auxiliary Interfaces
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" type="checkbox"/>
+    <label for="toctree-checkbox-35">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneTBB/source/memory_allocation.html">
+       Memory Allocation
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" type="checkbox"/>
+      <label for="toctree-checkbox-36">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/memory_allocation/tbb_allocator_cls.html">
+         tbb_allocator
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/memory_allocation/scalable_allocator_cls.html">
+         scalable_allocator
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/memory_allocation/cache_aligned_allocator_cls.html">
+         cache_aligned_allocator
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/memory_allocation/cache_aligned_resource_cls.html">
+         cache_aligned_resource
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/memory_allocation/scalable_memory_resource_func.html">
+         scalable_memory_resource
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/memory_allocation/c_interface_to_scalable_allocator.html">
+         C Interface to Scalable Allocator
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneTBB/source/mutual_exclusion.html">
+       Mutual Exclusion
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-37" name="toctree-checkbox-37" type="checkbox"/>
+      <label for="toctree-checkbox-37">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/mutual_exclusion/spin_mutex_cls.html">
+         spin_mutex
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/mutual_exclusion/spin_rw_mutex_cls.html">
+         spin_rw_mutex
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/mutual_exclusion/speculative_spin_mutex_cls.html">
+         speculative_spin_mutex
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/mutual_exclusion/speculative_spin_rw_mutex_cls.html">
+         speculative_spin_rw_mutex
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/mutual_exclusion/queuing_mutex_cls.html">
+         queuing_mutex
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/mutual_exclusion/queuing_rw_mutex_cls.html">
+         queuing_rw_mutex
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/mutual_exclusion/null_mutex_cls.html">
+         null_mutex
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/mutual_exclusion/null_rw_mutex_cls.html">
+         null_rw_mutex
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneTBB/source/timing.html">
+       Timing
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" type="checkbox"/>
+      <label for="toctree-checkbox-38">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneTBB/source/timing/tick_count_cls.html">
+         tick_count class
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneTBB/source/info_namespace.html">
+       info Namespace
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../oneVPL/source/index.html">
+   oneVPL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" type="checkbox"/>
+  <label for="toctree-checkbox-39">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneVPL/source/VPL_intel_media_sdk.html">
+     oneVPL for Intel
+     <sup>
+      ®
+     </sup>
+     Media Software Development Kit Users
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneVPL/source/architecture/index.html">
+     Architecture
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" type="checkbox"/>
+    <label for="toctree-checkbox-40">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/architecture/VPL_decoding.html">
+       Video Decoding
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/architecture/VPL_encoding.html">
+       Video Encoding
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/architecture/VPL_processing.html">
+       Video Processing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/architecture/VPL_decoding_vpp.html">
+       Video Decoding with multiple video processing
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneVPL/source/programming_guide/index.html">
+     Programming Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-41" name="toctree-checkbox-41" type="checkbox"/>
+    <label for="toctree-checkbox-41">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/programming_guide/VPL_prg_stc.html">
+       Status Codes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/programming_guide/VPL_prg_session.html">
+       oneVPL Session
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/programming_guide/VPL_prg_frame.html">
+       Frame and Fields
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/programming_guide/VPL_prg_decoding.html">
+       Decoding Procedures
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/programming_guide/VPL_prg_encoding.html">
+       Encoding Procedures
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/programming_guide/VPL_prg_vpp.html">
+       Video Processing Procedures
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/programming_guide/VPL_prg_transcoding.html">
+       Transcoding Procedures
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/programming_guide/VPL_prg_hw.html">
+       Hardware Acceleration
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/programming_guide/VPL_prg_mem.html">
+       Memory Allocation and External Allocators
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/programming_guide/VPL_prg_err.html">
+       Hardware Device Error Handling
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneVPL/source/VPL_summary.html">
+     Mandatory APIs and Functions
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_api_ref.html">
+     oneVPL API Reference
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-42" name="toctree-checkbox-42" type="checkbox"/>
+    <label for="toctree-checkbox-42">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_functions.html">
+       Function Reference
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-43" name="toctree-checkbox-43" type="checkbox"/>
+      <label for="toctree-checkbox-43">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_func_vid_decode.html">
+         VideoDECODE
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_func_vid_encode.html">
+         VideoENCODE
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_func_vid_vpp.html">
+         VideoVPP
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_func_vidcore.html">
+         VideoCORE
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_func_session.html">
+         Session Management
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_func_mem.html">
+         Memory
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_func_capabilities.html">
+         Implementation Capabilities
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_func_adapters.html">
+         Adapters
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_func_vid_decode_vpp.html">
+         VideoDECODE_VPP
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_structs.html">
+       Structure Reference
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-44" name="toctree-checkbox-44" type="checkbox"/>
+      <label for="toctree-checkbox-44">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_structs_type.html">
+         Type Definitions
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_structs_memory.html">
+         Memory Structures
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_structs_impl_manage.html">
+         Implementation Management
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_structs_cross_component.html">
+         Cross-component Structures
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_structs_decode.html">
+         Decode Structures
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_structs_encode.html">
+         Encode Structures
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_structs_vpp.html">
+         VPP Structures
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_structs_protected.html">
+         Protected Structures
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_structs_decode_vpp.html">
+         DECODDE_VPP Structures
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_enums.html">
+       Enumerator Reference
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_defines.html">
+       Define Reference
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_ref_types.html">
+       Type Reference
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_disp_api.html">
+       Dispatcher API
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-45" name="toctree-checkbox-45" type="checkbox"/>
+      <label for="toctree-checkbox-45">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_disp_api_func.html">
+         Dispatcher API Function Reference
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_disp_api_struct.html">
+         Dispatcher API Structure Reference
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_disp_api_enum.html">
+         Dispatcher API Enumeration Reference
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneVPL/source/API_ref/VPL_disp_api_def.html">
+         Dispatcher API Define Reference
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneVPL/source/Versioning.html">
+     oneVPL API Versioning
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneVPL/source/appendix/index.html">
+     Appendices
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-46" name="toctree-checkbox-46" type="checkbox"/>
+    <label for="toctree-checkbox-46">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/appendix/VPL_apnds_a.html">
+       Configuration Parameter Constraints
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/appendix/VPL_apnds_b.html">
+       Multiple-segment Encoding
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/appendix/VPL_apnds_c.html">
+       Streaming and Video Conferencing Features
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/appendix/VPL_apnds_d.html">
+       Switchable Graphics and Multiple Monitors
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/appendix/VPL_apnds_e.html">
+       Working Directly with VA API for Linux*
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneVPL/source/appendix/VPL_apnds_f.html">
+       CQP HRD Mode Encoding
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneVPL/source/VPL_acronyms.html">
+     Glossary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../oneVPL/source/VPL_change_log.html">
+     Change Log
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../index.html">
+   oneMKL
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-47" name="toctree-checkbox-47" type="checkbox"/>
+  <label for="toctree-checkbox-47">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../architecture/architecture.html">
+     oneMKL Architecture
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../domains.html">
+     oneMKL Domains
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-48" name="toctree-checkbox-48" type="checkbox"/>
+    <label for="toctree-checkbox-48">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../matrix-storage.html">
+       Matrix Storage
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../blas/blas.html">
+       BLAS Routines
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-49" name="toctree-checkbox-49" type="checkbox"/>
+      <label for="toctree-checkbox-49">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../blas/blas-level-1-routines.html">
+         BLAS Level 1 Routines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../blas/blas-level-2-routines.html">
+         BLAS Level 2 Routines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../blas/blas-level-3-routines.html">
+         BLAS Level 3 Routines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../blas/blas-like-extensions.html">
+         BLAS-like Extensions
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../lapack/lapack.html">
+       LAPACK Routines
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-50" name="toctree-checkbox-50" type="checkbox"/>
+      <label for="toctree-checkbox-50">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/geqrf.html">
+         geqrf
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/geqrf_scratchpad_size.html">
+         geqrf_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/gerqf.html">
+         gerqf
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/gerqf_scratchpad_size.html">
+         gerqf_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/getrf.html">
+         getrf
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/getrf_scratchpad_size.html">
+         getrf_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/getri.html">
+         getri
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/getri_scratchpad_size.html">
+         getri_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/getrs.html">
+         getrs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/getrs_scratchpad_size.html">
+         getrs_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/hetrf.html">
+         hetrf
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/hetrf_scratchpad_size.html">
+         hetrf_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/orgqr.html">
+         orgqr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/orgqr_scratchpad_size.html">
+         orgqr_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ormqr.html">
+         ormqr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ormqr_scratchpad_size.html">
+         ormqr_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ormrq.html">
+         ormrq
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ormrq_scratchpad_size.html">
+         ormrq_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/potrf.html">
+         potrf
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/potrf_scratchpad_size.html">
+         potrf_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/potri.html">
+         potri
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/potri_scratchpad_size.html">
+         potri_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/potrs.html">
+         potrs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/potrs_scratchpad_size.html">
+         potrs_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/sytrf.html">
+         sytrf
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/sytrf_scratchpad_size.html">
+         sytrf_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/trtrs.html">
+         trtrs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/trtrs_scratchpad_size.html">
+         trtrs_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ungqr.html">
+         ungqr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ungqr_scratchpad_size.html">
+         ungqr_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/unmqr.html">
+         unmqr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/unmqr_scratchpad_size.html">
+         unmqr_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/unmrq.html">
+         unmrq
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/unmrq_scratchpad_size.html">
+         unmrq_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/gebrd.html">
+         gebrd
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/gebrd_scratchpad_size.html">
+         gebrd_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/gesvd.html">
+         gesvd
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/gesvd_scratchpad_size.html">
+         gesvd_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/heevd.html">
+         heevd
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/heevd_scratchpad_size.html">
+         heevd_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/hegvd.html">
+         hegvd
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/hegvd_scratchpad_size.html">
+         hegvd_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/hetrd.html">
+         hetrd
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/hetrd_scratchpad_size.html">
+         hetrd_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/orgbr.html">
+         orgbr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/orgbr_scratchpad_size.html">
+         orgbr_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/orgtr.html">
+         orgtr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/orgtr_scratchpad_size.html">
+         orgtr_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ormtr.html">
+         ormtr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ormtr_scratchpad_size.html">
+         ormtr_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/syevd.html">
+         syevd
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/syevd_scratchpad_size.html">
+         syevd_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/sygvd.html">
+         sygvd
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/sygvd_scratchpad_size.html">
+         sygvd_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/sytrd.html">
+         sytrd
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/sytrd_scratchpad_size.html">
+         sytrd_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ungbr.html">
+         ungbr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ungbr_scratchpad_size.html">
+         ungbr_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ungtr.html">
+         ungtr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ungtr_scratchpad_size.html">
+         ungtr_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/unmtr.html">
+         unmtr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/unmtr_scratchpad_size.html">
+         unmtr_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/geqrf_batch.html">
+         geqrf_batch
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/geqrf_batch_scratchpad_size.html">
+         geqrf_batch_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/getrf_batch.html">
+         getrf_batch
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/getrf_batch_scratchpad_size.html">
+         getrf_batch_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/getri_batch.html">
+         getri_batch
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/getri_batch_scratchpad_size.html">
+         getri_batch_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/getrs_batch.html">
+         getrs_batch
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/getrs_batch_scratchpad_size.html">
+         getrs_batch_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/orgqr_batch.html">
+         orgqr_batch
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/orgqr_batch_scratchpad_size.html">
+         orgqr_batch_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/potrf_batch.html">
+         potrf_batch
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/potrf_batch_scratchpad_size.html">
+         potrf_batch_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/potrs_batch.html">
+         potrs_batch
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/potrs_batch_scratchpad_size.html">
+         potrs_batch_scratchpad_size
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ungqr_batch.html">
+         ungqr_batch
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../lapack/ungqr_batch_scratchpad_size.html">
+         ungqr_batch_scratchpad_size
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../spblas/spblas.html">
+       Sparse BLAS
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-51" name="toctree-checkbox-51" type="checkbox"/>
+      <label for="toctree-checkbox-51">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/matrixinit.html">
+         init_matrix_handle
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/releasematrixhandle.html">
+         release_matrix_handle
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/setcsrstructure.html">
+         set_csr_data
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/gemm.html">
+         gemm
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/gemv.html">
+         gemv
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/gemvdot.html">
+         gemvdot
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/gemvoptimize.html">
+         optimize_gemv
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/symv.html">
+         symv
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/trmv.html">
+         trmv
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/trmvoptimize.html">
+         optimize_trmv
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/trsv.html">
+         trsv
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/trsvoptimize.html">
+         optimize_trsv
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/supported-types.html">
+         Supported Types
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../spblas/format-descriptions.html">
+         Sparse storage formats
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../dft/dft.html">
+       Discrete Fourier Transform Functions
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-52" name="toctree-checkbox-52" type="checkbox"/>
+      <label for="toctree-checkbox-52">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../dft/enums_and_config_params.html">
+         Configuration Parameters and Enums
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../dft/descriptor.html">
+         descriptor
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../dft/compute_forward.html">
+         compute_forward
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../dft/compute_backward.html">
+         compute_backward
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../rng/overview.html">
+       Random Number Generators (RNG) Overview
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../rng/onemkl-rng-usage-model.html">
+       oneMKL RNG Usage Model
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../rng/generate-routine.html">
+       Generate Routine
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-53" name="toctree-checkbox-53" type="checkbox"/>
+      <label for="toctree-checkbox-53">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-generate.html">
+         generate
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../rng/engines-basic-random-number-generators.html">
+       Engines (Basic Random Number Generators)
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" type="checkbox"/>
+      <label for="toctree-checkbox-54">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-default_engine.html">
+         default_engine
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-mrg32k3a.html">
+         mrg32k3a
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-philox4x32x10.html">
+         philox4x32x10
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-mcg31m1.html">
+         mcg31m1
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-mcg59.html">
+         mcg59
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-r250.html">
+         r250
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-wichmann_hill.html">
+         wichmann_hill
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-mt19937.html">
+         mt19937
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-sfmt19937.html">
+         sfmt19937
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-mt2203.html">
+         mt2203
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-ars5.html">
+         ars5
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-sobol.html">
+         sobol
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-niederreiter.html">
+         niederreiter
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-nondeterministic.html">
+         nondeterministic
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../rng/service-routines.html">
+       Service Routines
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-55" name="toctree-checkbox-55" type="checkbox"/>
+      <label for="toctree-checkbox-55">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-leapfrog.html">
+         leapfrog
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-skip_ahead.html">
+         skip_ahead
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../rng/distributions.html">
+       Distributions
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-56" name="toctree-checkbox-56" type="checkbox"/>
+      <label for="toctree-checkbox-56">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/distributions-template-parameter-mkl-rng-method-values.html">
+         Distributions Template Parameter Method
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-uniform-continuous.html">
+         uniform (continuous)
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-gaussian.html">
+         gaussian
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-exponential.html">
+         exponential
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-laplace.html">
+         laplace
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-weibull.html">
+         weibull
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-cauchy.html">
+         cauchy
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-rayleigh.html">
+         rayleigh
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-lognormal.html">
+         lognormal
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-gumbel.html">
+         gumbel
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-gamma.html">
+         gamma
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-beta.html">
+         beta
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-chi_square.html">
+         chi_square
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-gaussian_mv.html">
+         gaussian_mv
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-uniform-discrete.html">
+         uniform (discrete)
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-uniform_bits.html">
+         uniform_bits
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-bits.html">
+         bits
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-bernoulli.html">
+         bernoulli
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-geometric.html">
+         geometric
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-binomial.html">
+         binomial
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-hypergeometric.html">
+         hypergeometric
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-poisson.html">
+         poisson
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-poisson_v.html">
+         poisson_v
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-negbinomial.html">
+         negative_binomial
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../rng/mkl-rng-multinomial.html">
+         multinomial
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../rng/bibliography.html">
+       Bibliography
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../stats/overview.html">
+       Summary Statistics Overview
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../stats/onemkl_stats_usage_model.html">
+       oneMKL Summary Statistics Usage Model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../stats/onemkl_stats_dataset.html">
+       dataset
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../stats/stats_routines.html">
+       Summary Statistics Routines
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-57" name="toctree-checkbox-57" type="checkbox"/>
+      <label for="toctree-checkbox-57">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_raw_sum.html">
+         raw_sum
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_central_sum.html">
+         central_sum
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_central_sum_user_mean.html">
+         central_sum with provided mean
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_mean.html">
+         mean
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_raw_moment.html">
+         raw_moment
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_central_moment.html">
+         central_moment
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_central_moment_user_mean.html">
+         central_moment with provided mean
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_variation.html">
+         variation
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_variation_user_mean.html">
+         variation with provided mean
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_skewness.html">
+         skewness
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_skewness_user_mean.html">
+         skewness with provided mean
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_kurtosis.html">
+         kurtosis
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_kurtosis_user_mean.html">
+         kurtosis with provided mean
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_min.html">
+         min
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_max.html">
+         max
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_min_max.html">
+         min_max
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../stats/stats_service_routines.html">
+       Service Routines
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-58" name="toctree-checkbox-58" type="checkbox"/>
+      <label for="toctree-checkbox-58">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../stats/onemkl_stats_make_dataset.html">
+         make_dataset
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="special-value-notations.html">
+       Special Value Notations
+      </a>
+     </li>
+     <li class="toctree-l3 current active has-children">
+      <a class="reference internal" href="vm-mathematical-functions.html">
+       VM Mathematical Functions
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-59" name="toctree-checkbox-59" type="checkbox"/>
+      <label for="toctree-checkbox-59">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="current">
+       <li class="toctree-l4">
+        <a class="reference internal" href="abs.html">
+         abs
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="acos.html">
+         acos
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="acosh.html">
+         acosh
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="acospi.html">
+         acospi
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="add.html">
+         add
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="arg.html">
+         arg
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="asin.html">
+         asin
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="asinh.html">
+         asinh
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="asinpi.html">
+         asinpi
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="atan.html">
+         atan
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="atan2.html">
+         atan2
+        </a>
+       </li>
+       <li class="toctree-l4 current active">
+        <a class="current reference internal" href="#">
+         atan2pi
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="atanh.html">
+         atanh
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="atanpi.html">
+         atanpi
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="cbrt.html">
+         cbrt
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="cdfnorm.html">
+         cdfnorm
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="cdfnorminv.html">
+         cdfnorminv
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="ceil.html">
+         ceil
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="cis.html">
+         cis
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="conj.html">
+         conj
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="copysign.html">
+         copysign
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="cos.html">
+         cos
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="cosd.html">
+         cosd
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="cosh.html">
+         cosh
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="cospi.html">
+         cospi
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="div.html">
+         div
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="erf.html">
+         erf
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="erfc.html">
+         erfc
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="erfcinv.html">
+         erfcinv
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="erfinv.html">
+         erfinv
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="exp.html">
+         exp
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="exp10.html">
+         exp10
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="exp2.html">
+         exp2
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="expint1.html">
+         expint1
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="expm1.html">
+         expm1
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="fdim.html">
+         fdim
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="floor.html">
+         floor
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="fmax.html">
+         fmax
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="fmin.html">
+         fmin
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="fmod.html">
+         fmod
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="frac.html">
+         frac
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="hypot.html">
+         hypot
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="inv.html">
+         inv
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="invcbrt.html">
+         invcbrt
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="invsqrt.html">
+         invsqrt
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="lgamma.html">
+         lgamma
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="linearfrac.html">
+         linearfrac
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="ln.html">
+         ln
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="log10.html">
+         log10
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="log1p.html">
+         log1p
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="log2.html">
+         log2
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="logb.html">
+         logb
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="maxmag.html">
+         maxmag
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="minmag.html">
+         minmag
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="modf.html">
+         modf
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="mul.html">
+         mul
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="mulbyconj.html">
+         mulbyconj
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="nearbyint.html">
+         nearbyint
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="nextafter.html">
+         nextafter
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pow.html">
+         pow
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pow2o3.html">
+         pow2o3
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="pow3o2.html">
+         pow3o2
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="powr.html">
+         powr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="powx.html">
+         powx
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="remainder.html">
+         remainder
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="rint.html">
+         rint
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="round.html">
+         round
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="sin.html">
+         sin
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="sincos.html">
+         sincos
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="sind.html">
+         sind
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="sinh.html">
+         sinh
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="sinpi.html">
+         sinpi
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="sqr.html">
+         sqr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="sqrt.html">
+         sqrt
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="sub.html">
+         sub
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tan.html">
+         tan
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tand.html">
+         tand
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tanh.html">
+         tanh
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tanpi.html">
+         tanpi
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="tgamma.html">
+         tgamma
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="trunc.html">
+         trunc
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="vm-service-functions.html">
+       VM Service Functions
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-60" name="toctree-checkbox-60" type="checkbox"/>
+      <label for="toctree-checkbox-60">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="setmode.html">
+         set_mode
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="get_mode.html">
+         get_mode
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="set_status.html">
+         set_status
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="get_status.html">
+         get_status
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="clear_status.html">
+         clear_status
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="create_error_handler.html">
+         create_error_handler
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vm-exceptions.html">
+       Exceptions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="bibliography.html">
+       Bibliography
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../appendix/appendix.html">
+     oneMKL Appendix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../oneART/source/nested-index.html">
+   Advanced Ray Tracing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-61" name="toctree-checkbox-61" type="checkbox"/>
+  <label for="toctree-checkbox-61">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneART/source/component-libraries.html">
+     Component Libraries
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-62" name="toctree-checkbox-62" type="checkbox"/>
+    <label for="toctree-checkbox-62">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneART/source/embree.html">
+       Embree
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-63" name="toctree-checkbox-63" type="checkbox"/>
+      <label for="toctree-checkbox-63">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneART/source/embree-spec.html">
+         Introduction
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneART/source/openvkl.html">
+       Open VKL
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-64" name="toctree-checkbox-64" type="checkbox"/>
+      <label for="toctree-checkbox-64">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneART/source/openvkl-intro.html">
+         Introduction
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneART/source/openvkl-spec.html">
+         Open VKL API
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneART/source/oidn.html">
+       Open Image Denoise
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-65" name="toctree-checkbox-65" type="checkbox"/>
+      <label for="toctree-checkbox-65">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneART/source/oidn-intro.html">
+         Introduction
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneART/source/oidn-spec.html">
+         Open Image Denoise API
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../../oneART/source/ospray.html">
+       OSPRay
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-66" name="toctree-checkbox-66" type="checkbox"/>
+      <label for="toctree-checkbox-66">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneART/source/ospray-intro.html">
+         Introduction
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../../oneART/source/ospray-spec.html">
+         OSPRay API
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../../oneART/source/appendices.html">
+     Appendices
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" type="checkbox"/>
+    <label for="toctree-checkbox-67">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneART/source/ospray-studio.html">
+       OSPRay Studio
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneART/source/ospray-hydra-plugin.html">
+       OSPRay Plug-in for USD Hydra
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneART/source/ispc.html">
+       ISPC Implicit SPMD Program Compiler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneART/source/future-consider.html">
+       Future Considerations
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../../oneART/source/acknowledgment.html">
+       Acknowledgment
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://spec.oneapi.com/releases/index.html">
+   Releases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notices.html">
+   Legal Notices and Disclaimers
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../../../_sources/elements/oneMKL/source/domains/vm/atan2pi.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/oneapi-src/oneapi-spec/issues/new?title=Issue%20on%20page%20%2Felements/oneMKL/source/domains/vm/atan2pi.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/oneapi-src/oneapi-spec/edit/main/source/elements/oneMKL/source/domains/vm/atan2pi.rst"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="atan2pi">
+<span id="onemkl-vm-atan2pi"></span><h1>atan2pi<a class="headerlink" href="#atan2pi" title="Permalink to this headline">¶</a></h1>
+<div class="docutils container">
+<p>Computes the four-quadrant inverse tangent of the ratios of the
+corresponding elements of two vectors divided by <code class="docutils literal notranslate"><span class="pre">π</span></code>.</p>
+<div class="section docutils container">
+<p class="sectiontitle rubric">Syntax</p>
+<p>Buffer API:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nn">oneapi</span><span class="o">::</span><span class="nn">mkl</span><span class="o">::</span><span class="nn">vm</span> <span class="p">{</span>
+
+<span class="n">sycl</span><span class="o">::</span><span class="n">event</span> <span class="nf">atan2pi</span><span class="p">(</span>
+        <span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="o">&amp;</span> <span class="n">exec_queue</span><span class="p">,</span>
+        <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">n</span><span class="p">,</span>
+        <span class="n">sycl</span><span class="o">::</span><span class="n">buffer</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="mi">1</span><span class="o">&gt;&amp;</span> <span class="n">a</span><span class="p">,</span>
+        <span class="n">sycl</span><span class="o">::</span><span class="n">buffer</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="mi">1</span><span class="o">&gt;&amp;</span> <span class="n">b</span><span class="p">,</span>
+        <span class="n">sycl</span><span class="o">::</span><span class="n">buffer</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="mi">1</span><span class="o">&gt;&amp;</span> <span class="n">y</span><span class="p">,</span>
+        <span class="n">oneapi</span><span class="o">::</span><span class="n">mkl</span><span class="o">::</span><span class="n">vm</span><span class="o">::</span><span class="n">mode</span> <span class="n">mode</span> <span class="o">=</span> <span class="n">oneapi</span><span class="o">::</span><span class="n">mkl</span><span class="o">::</span><span class="n">vm</span><span class="o">::</span><span class="n">mode</span><span class="o">::</span><span class="n">not_defined</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="c1">// namespace oneapi::mkl::vm</span>
+</pre></div>
+</div>
+<p>USM API:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nn">oneapi</span><span class="o">::</span><span class="nn">mkl</span><span class="o">::</span><span class="nn">vm</span> <span class="p">{</span>
+
+<span class="n">sycl</span><span class="o">::</span><span class="n">event</span> <span class="nf">atan2pi</span><span class="p">(</span>
+        <span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="o">&amp;</span> <span class="n">exec_queue</span><span class="p">,</span>
+        <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">n</span><span class="p">,</span>
+        <span class="n">T</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span>
+        <span class="n">T</span><span class="o">*</span> <span class="n">b</span><span class="p">,</span>
+        <span class="n">T</span><span class="o">*</span> <span class="n">y</span><span class="p">,</span>
+        <span class="n">sycl</span><span class="o">::</span><span class="n">vector_class</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">event</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span> <span class="n">depends</span> <span class="o">=</span> <span class="p">{},</span>
+        <span class="n">oneapi</span><span class="o">::</span><span class="n">mkl</span><span class="o">::</span><span class="n">vm</span><span class="o">::</span><span class="n">mode</span> <span class="n">mode</span> <span class="o">=</span> <span class="n">oneapi</span><span class="o">::</span><span class="n">mkl</span><span class="o">::</span><span class="n">vm</span><span class="o">::</span><span class="n">mode</span><span class="o">::</span><span class="n">not_defined</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="c1">// namespace oneapi::mkl::vm</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">atan2pi</span></code> supports the following precisions.</p>
+<table class="table">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>T</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">double</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section docutils container">
+<p class="sectiontitle rubric">Description</p>
+<p>The atan2pi(a, b) function computes the four-quadrant inverse tangent
+of the ratios of the corresponding elements of two vectors divided by
+<code class="docutils literal notranslate"><span class="pre">π</span></code>.</p>
+<p>For the elements of the output vector <code class="docutils literal notranslate"><span class="pre">y</span></code>, the function computers
+the four-quadrant arctangent of <code class="docutils literal notranslate"><span class="pre">a</span></code><sub>i</sub>/<code class="docutils literal notranslate"><span class="pre">b</span></code><sub>i</sub>, with
+the result divided by <code class="docutils literal notranslate"><span class="pre">π</span></code>.</p>
+<div class="tablenoborder docutils container">
+<table class="table">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Argument 1</p></th>
+<th class="head"><p>Argument 2</p></th>
+<th class="head"><p>Result</p></th>
+<th class="head"><p>Status code</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-∞</p></td>
+<td><p>-∞</p></td>
+<td><p>-3/4</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-∞</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code> &lt; +0</p></td>
+<td><p>-1/2</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-∞</p></td>
+<td><p>-0</p></td>
+<td><p>+1/2</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-∞</p></td>
+<td><p>+0</p></td>
+<td><p>-1/2</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-∞</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span></code> &gt; +0</p></td>
+<td><p>-1/2</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-∞</p></td>
+<td><p>+∞</p></td>
+<td><p>-1/4</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code> &lt; +0</p></td>
+<td><p>-∞</p></td>
+<td><p>-1</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code> &lt; +0</p></td>
+<td><p>-0</p></td>
+<td><p>-1/2</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code> &lt; +0</p></td>
+<td><p>+0</p></td>
+<td><p>-1/2</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code> &lt; +0</p></td>
+<td><p>+∞</p></td>
+<td><p>-0</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-0</p></td>
+<td><p>-∞</p></td>
+<td><p>-1</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code> &lt; +0</p></td>
+<td><p>-1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-0</p></td>
+<td><p>-0</p></td>
+<td><p>-1</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-0</p></td>
+<td><p>+0</p></td>
+<td><p>-0</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code> &gt; +0</p></td>
+<td><p>-0</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-0</p></td>
+<td><p>+∞</p></td>
+<td><p>-0</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>+0</p></td>
+<td><p>-∞</p></td>
+<td><p>+1</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>+0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code> &lt; +0</p></td>
+<td><p>+1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>+0</p></td>
+<td><p>-0</p></td>
+<td><p>+1</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>+0</p></td>
+<td><p>+0</p></td>
+<td><p>+0</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>+0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code> &gt; +0</p></td>
+<td><p>+0</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>+0</p></td>
+<td><p>+∞</p></td>
+<td><p>+0</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code> &gt; +0</p></td>
+<td><p>-∞</p></td>
+<td><p>+1</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code> &gt; +0</p></td>
+<td><p>-0</p></td>
+<td><p>+1/2</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code> &gt; +0</p></td>
+<td><p>+0</p></td>
+<td><p>+1/2</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code> &gt; +0</p></td>
+<td><p>+∞</p></td>
+<td><p>+1/4</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>+∞</p></td>
+<td><p>-∞</p></td>
+<td><p>+3/4</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>+∞</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code> &lt; +0</p></td>
+<td><p>+1/2</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>+∞</p></td>
+<td><p>-0</p></td>
+<td><p>+1/2</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>+∞</p></td>
+<td><p>+0</p></td>
+<td><p>+1/2</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>+∞</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code> &gt; +0</p></td>
+<td><p>+1/2</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>+∞</p></td>
+<td><p>+∞</p></td>
+<td><p>+1/4</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code> &gt; +0</p></td>
+<td><p>QNAN</p></td>
+<td><p>QNAN</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code> &gt; +0</p></td>
+<td><p>SNAN</p></td>
+<td><p>QNAN</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>QNAN</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code> &gt; +0</p></td>
+<td><p>QNAN</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SNAN</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span></code> &gt; +0</p></td>
+<td><p>QNAN</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>QNAN</p></td>
+<td><p>QNAN</p></td>
+<td><p>QNAN</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>QNAN</p></td>
+<td><p>SNAN</p></td>
+<td><p>QNAN</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SNAN</p></td>
+<td><p>QNAN</p></td>
+<td><p>QNAN</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SNAN</p></td>
+<td><p>SNAN</p></td>
+<td><p>QNAN</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The atan2pi(a, b) function does not generate any errors.</p>
+</div>
+<div class="section docutils container">
+<p class="sectiontitle rubric">Input Parameters</p>
+<p>Buffer API:</p>
+<dl class="simple">
+<dt>exec_queue</dt><dd><p>The queue where the routine should be executed.</p>
+</dd>
+<dt>n</dt><dd><p>Specifies the number of elements to be calculated.</p>
+</dd>
+<dt>a</dt><dd><p>The buffer <code class="docutils literal notranslate"><span class="pre">a</span></code> containing 1st input vector of size <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+</dd>
+<dt>b</dt><dd><p>The buffer <code class="docutils literal notranslate"><span class="pre">b</span></code> containing 2nd input vector of size <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+</dd>
+<dt>mode</dt><dd><p>Overrides the global VM mode setting for this function call. See
+<a class="reference internal" href="setmode.html#onemkl-vm-setmode"><span class="std std-ref">set_mode</span></a>
+function for possible values and their description. This is an
+optional parameter. The default value is <code class="docutils literal notranslate"><span class="pre">oneapi::mkl::vm::mode::not_defined</span></code>.</p>
+</dd>
+</dl>
+<p>USM API:</p>
+<dl class="simple">
+<dt>exec_queue</dt><dd><p>The queue where the routine should be executed.</p>
+</dd>
+<dt>n</dt><dd><p>Specifies the number of elements to be calculated.</p>
+</dd>
+<dt>a</dt><dd><p>Pointer <code class="docutils literal notranslate"><span class="pre">a</span></code> to the 1st input vector of size <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+</dd>
+<dt>b</dt><dd><p>Pointer <code class="docutils literal notranslate"><span class="pre">b</span></code> to the 2nd input vector of size <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+</dd>
+<dt>depends</dt><dd><p>Vector of dependent events (to wait for input data to be ready).</p>
+</dd>
+<dt>mode</dt><dd><p>Overrides the global VM mode setting for this function call. See
+the <a class="reference internal" href="setmode.html#onemkl-vm-setmode"><span class="std std-ref">set_mode</span></a>
+function for possible values and their description. This is an
+optional parameter. The default value is <code class="docutils literal notranslate"><span class="pre">oneapi::mkl::vm::mode::not_defined</span></code>.</p>
+</dd>
+</dl>
+</div>
+<div class="section docutils container">
+<p class="sectiontitle rubric">Output Parameters</p>
+<p>Buffer API:</p>
+<dl class="simple">
+<dt>y</dt><dd><p>The buffer <code class="docutils literal notranslate"><span class="pre">y</span></code> containing the output vector of size <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+</dd>
+</dl>
+<p>USM API:</p>
+<dl class="simple">
+<dt>y</dt><dd><p>Pointer <code class="docutils literal notranslate"><span class="pre">y</span></code> to the output vector of size <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+</dd>
+<dt>return value (event)</dt><dd><p>Event, signifying availability of computed output and status code(s).</p>
+</dd>
+</dl>
+</div>
+<div class="section docutils container">
+<p class="sectiontitle rubric">Exceptions</p>
+<p>For list of generated exceptions please refer to  <a class="reference internal" href="vm-exceptions.html#onemkl-vm-exceptions"><span class="std std-ref">Exceptions</span></a></p>
+</div>
+<div class="familylinks docutils container">
+<div class="parentlink docutils container">
+<p><strong>Parent topic:</strong> <a class="reference internal" href="vm-mathematical-functions.html#onemkl-vm-mathematical-functions"><span class="std std-ref">VM Mathematical Functions</span></a></p>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="atan2.html" title="previous page">atan2</a>
+    <a class='right-next' id="next-link" href="atanh.html" title="next page">atanh</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Intel<br/>
+        
+            &copy; Copyright 2021, Intel Corporation.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
