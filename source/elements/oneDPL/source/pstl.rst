@@ -139,6 +139,13 @@ as the template argument, otherwise unspecified.
 Return a policy object constructed from ``policy``, with a new kernel name provided as the template
 argument. If no policy object is provided, the new policy is constructed from ``dpcpp_default``.
 
+Pass Data to Algorithms
+++++++++++++++++++++++++
+You can use one of the following ways to pass data to an algorithm executed with a DPC++ policy:
+
+- ``begin`` and ``end`` buffer wrappers (see below);
+- Unified shared memory (USM) pointers and iterators of ``std::vector`` with USM allocators.
+
 Buffer wrappers
 ++++++++++++++++
 
