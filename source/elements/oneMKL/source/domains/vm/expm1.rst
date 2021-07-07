@@ -12,6 +12,7 @@ expm1
 
 
    Computes an exponential of vector elements decreased by 1.
+   ``exp(a[i]) - 1``
 
 
    .. container:: section
@@ -244,5 +245,4 @@ expm1
    .. container:: parentlink
 
       **Parent topic:** :ref:`onemkl_vm_mathematical_functions`
-
 
