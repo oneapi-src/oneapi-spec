@@ -286,4 +286,4 @@ erfcinv
 
 
 
-.. |image0| image:: ../equations/GUID-8C1F2803-8F8F-4795-BF16-41856C6442CF-low.jpg
+.. |image0| image:: ../equations/inverse_error_functions_plot.jpg

@@ -262,4 +262,4 @@ cdfnorm
 
       **Parent topic:** :ref:`onemkl_vm_mathematical_functions`
 
-.. |image0| image:: ../equations/GUID-0B9A59CC-C914-429D-AF87-93B16DABD291-low.jpg
+.. |image0| image:: ../equations/error_functions_plot.jpg
