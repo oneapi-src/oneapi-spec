@@ -33,7 +33,7 @@ A DPC++ execution policy specifies where and how an algorithm runs.
         device_policy<KernelName>
         make_device_policy( sycl::device );
 
-        template <typename NewKernelName, typename OldKernelName>
+        template <typename NewKernelName, typename OldKernelName = /*unspecified*/>
         device_policy<NewKernelName>
         make_device_policy( const device_policy<OldKernelName>& = dpcpp_default );
       }
@@ -132,7 +132,7 @@ as the template argument, otherwise unspecified.
   
 .. code:: cpp
 
-  template <typename NewKernelName, typename OldKernelName>
+  template <typename NewKernelName, typename OldKernelName = /*unspecified*/>
   device_policy<NewKernelName>
   make_device_policy( const device_policy<OldKernelName>& policy = dpcpp_default )
 
