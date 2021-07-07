@@ -12,7 +12,7 @@ log1p
 
 
    Computes a natural logarithm of vector elements that are increased by
-   1.
+   1. ``log(a[i] + 1)``
 
 
    .. container:: section
